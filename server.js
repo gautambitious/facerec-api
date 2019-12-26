@@ -21,10 +21,19 @@ app.use(cors());
 //   res.send('Nice')
 // })
 app.post('/signin', (req, res) => {
-  console.log(req.body);
-  res.json('done');
+  const { email, password } = req.body;
+  knex('login').where({email: email}).select('password')
+  .then((res) => {
+    const password1 = res[0].password;
+    if(bcrypt.compareSync(password, password1)){
+      kn
+      res.json({
+
+      });
+    }
+  });
+  // .then((password) => console.log);
 })
-knex('login').where({email: 'yoyo'}).select('password', 'id').then(console.log);
 app.post('/register', (req, res) => {
     knex('users').insert({
       email: req.body.email,
