@@ -26,10 +26,7 @@ app.post('/signin', (req, res) => {
   .then((res) => {
     const password1 = res[0].password;
     if(bcrypt.compareSync(password, password1)){
-      kn
-      res.json({
-
-      });
+      res.json("success");
     }
   });
   // .then((password) => console.log);
